@@ -1,0 +1,29 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {C6ED4938-68CA-412F-9051-7D9D3667B76B} = s 'TmAmsiProvider Class'
+		{
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			TypeLib = s '{76229498-17D0-4F72-8AA8-04B47A48EB1E}'
+			Version = s '1.0'
+		}
+	}
+}
+
+HKLM
+{
+	NoRemove SOFTWARE {
+		NoRemove Microsoft {
+			NoRemove AMSI {
+				NoRemove Providers {
+					ForceRemove {C6ED4938-68CA-412F-9051-7D9D3667B76B}
+				}
+			}
+		}
+	}
+}
